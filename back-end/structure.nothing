@@ -1,0 +1,25 @@
+{
+  "equipos": [
+    {
+      "name": "equipo papita",
+      "proyectos": [{
+        "nombre": "",
+        "created": "2020-89-22",
+        "descripcion": "askd",
+        "privado": true,
+        "link": "kasd",
+        "tags": ["react", "NLP"]
+      }],
+      "usuarios":[{
+        "userid": 78123713,
+        "nombre": "kadlk"
+      }]
+    }
+  ],
+
+  "usuarios": [{
+      "intereses": ["react"],
+      "credentials":{}
+  }]
+}
+

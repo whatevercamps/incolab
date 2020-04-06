@@ -1,0 +1,12 @@
+{
+  "name": "incolab-projects-microservice",
+  "version": "1.0.0",
+  "description": "Micro service to handle projects",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha --timeout 10000",
+    "start": "node server.js"
+  },
+  "author": "Juan Torres and David Bautista",
+  "license": "MIT"
+}
