@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Sen&display=swap');
+
+.Navbar .navbar{
+  background-color: #232426;
+  color: #ffffff;
+  font-family: 'Sen', sans-serif;
+}
+
+.Navbar .icons i{
+  margin: 0 25px 0 25px;
+}
+
+.Navbar .icons i:hover{
+  color: #6D93CA;
+}
+
+.Navbar .icons .active{
+  color: #6D93CA;
+}
+
+.Navbar .icons{
+  text-align: center;
+}
+
+.Navbar .search{
+  text-align: left
+}
+
+.Navbar .search input{
+  border-radius: 20px;
+}
+
+.Navbar a{
+  color: #ffffff;
+  margin: 0 10px 0 10px;
+}
+
+.Navbar button{
+  margin: 0 10px 0 10px;
+  color: #ffffff;
+  background-color: #6D93CA;
+  border-radius: 20px;
+}
+
+.Navbar button:hover{
+  background-color: #A4B7D9;
+  color: #ffffff;
+}
+
+.Navbar .login{
+  text-align: end;
+}
