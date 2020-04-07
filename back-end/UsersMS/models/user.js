@@ -1,27 +1,44 @@
-const bcrypt = require('bcryptjs');
+"use strict";
 
+const MongoClient = require("mongodb").MongoClient;
+const ObjectID = require("mongodb").ObjectID;
 
-module.exports.getUserById = function (id, callback) {
-  User.findById(id, callback);
-};
+const ModelGenerator = () => {
+  let model = {};
+  let dbURL = process.env.DB_URL || "";
+  let dbName = process.env.DB_NAME || "";
 
-module.exports.getUserByEmail = (email, callback) => {
-  const query = {
-    email: email
+  model.connect = () => {
+    const client = new MongoClient(dbURL, { useNewUrlParser: true });
+    return client.connect();
   };
-  User.findOne(query, callback);
-};
 
-module.exports.createUser = (newUser, callback) => {
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newUser.password, salt, (err, hash) => {
-      if (err) throw err;
-      newUser.password = hash;
-      newUser.save(callback);
+  model.createUser = (client, user) => {
+    const playersHandler = client.db(dbName).collection("users");
+    playersHandler.insert(user).finally(() => {
+      client.close();
     });
-  });
+  };
+
+  model.getUserById = (client, id) => {
+    const UsersCollection = client.db(dbName).collection("users");
+    return UsersCollection.find({ _id: new ObjectID(id || "") })
+      .toArray()
+      .finally(() => {
+        client.close();
+      });
+  };
+
+  model.getUsers = (client, query) => {
+    const UsersCollection = client.db(dbName).collection("users");
+    return UsersCollection.find(query)
+      .toArray()
+      .finally(() => {
+        client.close();
+      });
+  };
+
+  return model;
 };
 
-module.exports.comparePassword = function (password, hash, callback) {
-  bcrypt.compare(password, hash, callback);
-};
+module.exports = ModelGenerator;

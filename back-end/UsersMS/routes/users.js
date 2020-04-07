@@ -1,11 +1,14 @@
-const express = require('express');
-const passport = require('passport');
-const jwt = require('jsonwebtoken');
-const { validationResult } = require('express-validator');
+const express = require("express");
 
-const inputValidator = require('../utils/input-validator');
-const config = require('../config/db');
-const User = require('../models/user');
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+
+const { validationResult } = require("express-validator");
+const inputValidator = require("../utils/input-validator");
+
+const ModelGenerator = require("../models/user");
+const model = ModelGenerator();
 
 const router = express.Router();
 
@@ -15,101 +18,124 @@ const INTERNAL_SERVER_ERROR_CODE = 500;
 const OK_STATUS_CODE = 200;
 
 // Register
-router.post('/register', inputValidator('addUser'), (req, res) => {
+router.post("/register", inputValidator("addUser"), (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res
-      .status(BAD_REQUEST_CODE)
-      .json({ success: false, errors: errors.array() });
+    return res.status(BAD_REQUEST_CODE).json({
+      success: false,
+      msg: "Name, email and password is required",
+      errors: errors.array(),
+    });
   }
 
-  let newUser = new User({
+  let newUser = {
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password
-  });
+    password: req.body.password,
+  };
 
-  User.createUser(newUser, (err, user) => {
-    if (err)
+  bcrypt
+    .genSalt(10)
+    .then((salt) => bcrypt.hash(newUser.password, salt))
+    .then((hash) => {
+      newUser.password = hash;
+      return model
+        .connect()
+        .then((client) => model.createUser(client, newUser))
+        .then((resp) => {
+          res.status(OK_STATUS_CODE).json({
+            success: true,
+            msg: "User registered",
+            data: resp,
+          });
+        });
+    })
+    .catch((err) => {
       return res.status(INTERNAL_SERVER_ERROR_CODE).json({
         success: false,
-        error: err
+        msg: "Failure registering user",
+        error: err,
       });
-    else {
-      res.status(OK_STATUS_CODE).json({
-        success: true,
-        data: user
-      });
-    }
-  });
+    });
 });
 
 // Authenticate
-router.post('/authenticate', inputValidator('authUser'), (req, res) => {
+router.post("/authenticate", inputValidator("authUser"), (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res
-      .status(BAD_REQUEST_CODE)
-      .json({ success: false, errors: errors.array() });
+    return res.status(BAD_REQUEST_CODE).json({
+      success: false,
+      msg: "Email and password is required",
+      error: errors.array(),
+    });
   }
 
   const email = req.body.email;
   const password = req.body.password;
+  const query = { email: email };
 
-  User.getUserByEmail(email, (err, user) => {
-    if (err)
-      return res
-        .status(INTERNAL_SERVER_ERROR_CODE)
-        .json({ success: false, error: err });
-    if (!user) {
-      return res.status(UNAUTHORIZED_CODE).json({
-        success: false,
-        error: 'Email or password wrong'
-      });
-    }
-
-    User.comparePassword(password, user.password, (err, isMatch) => {
-      if (err) throw err;
-      if (isMatch) {
-        const token = jwt.sign(
-          ((user['password'] = '*'), user).toJSON(),
-          config.secret,
-          {
-            expiresIn: 3600 //60 minutes
-          }
-        );
-
-        res.status(OK_STATUS_CODE).json({
-          success: true,
-          token: `JWT ${token}`
-        });
-      } else {
+  model
+    .connect()
+    .then((client) => model.getUsers(client, query))
+    .then((users) => {
+      if (!users || !users.length) {
         return res.status(UNAUTHORIZED_CODE).json({
           success: false,
-          error: 'Email or password wrong'
+          msg: "Email or password wrong",
         });
       }
+
+      bcrypt
+        .compare(password, users[0].password)
+        .then((isMatch) => {
+          if (isMatch) {
+            const expiresTime = 60 * 60;
+            const token = jwt.sign(users[0], process.env.SECRET, {
+              expiresIn: expiresTime,
+            });
+            res.cookie("jwt", token, { httpOnly: true, secure: false });
+            return res.status(OK_STATUS_CODE).json({
+              success: true,
+              token: token,
+              msg: `your token expires in ${expiresTime} seconds`,
+            });
+          } else {
+            return res.json({
+              success: false,
+              msg: "Email or password wrong",
+            });
+          }
+        })
+        .catch((err) => {
+          console.log("error", err);
+          return res.status(INTERNAL_SERVER_ERROR_CODE).json({
+            success: false,
+            msg: "error validating credentials",
+            error: err,
+          });
+        });
+    })
+    .catch((err) => {
+      console.log("error", err);
+      return res
+        .status(INTERNAL_SERVER_ERROR_CODE)
+        .json({ success: false, msg: "error in user auth", error: err });
     });
-  });
 });
 
-// Profile
 router.get(
-  '/profile',
-  passport.authenticate('jwt', {
-    session: false
+  "/profile",
+  passport.authenticate("jwt", {
+    session: false,
   }),
   (req, res) => {
     let user = req.user;
-    delete user['password'];
+    delete user["password"];
     res.status(OK_STATUS_CODE).json({
-      user: ((user['password'] = '*'), user)
+      success: true,
+      user: ((user["password"] = "*"), user),
     });
   }
 );
-
-router.get('*', (req, res) => {
-  res.json({ req: req });
-});
 
 module.exports = router;

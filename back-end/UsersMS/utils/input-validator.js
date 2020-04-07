@@ -1,19 +1,19 @@
-const { check } = require('express-validator');
+const { check } = require("express-validator");
 
-module.exports = method => {
+module.exports = (method) => {
   switch (method) {
-    case 'addUser': {
+    case "addUser": {
       return [
-        check('email').exists().normalizeEmail().isEmail(),
-        check('name').exists().isString().isLength({ min: 2, max: 40 }),
-        check('password').exists().isString().isLength({ min: 8, max: 40 })
+        check("email").exists().normalizeEmail().isEmail(),
+        check("name").exists().isString().isLength({ min: 2, max: 40 }),
+        check("password").exists().isString().isLength({ min: 8, max: 40 }),
       ];
     }
 
-    case 'authUser': {
+    case "authUser": {
       return [
-        check('email').exists().normalizeEmail().isEmail(),
-        check('password').exists().isString().isLength({ min: 8, max: 40 })
+        check("email").exists().normalizeEmail().isEmail(),
+        check("password").exists().isString().isLength({ min: 8, max: 40 }),
       ];
     }
   }
