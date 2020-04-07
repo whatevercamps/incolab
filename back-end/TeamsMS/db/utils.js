@@ -1,22 +1,14 @@
 'use strict';
 
 const MongoClient = require('mongodb').MongoClient;
-const dotenv = require('dotenv');
-// const ObjectID = require('mongodb').ObjectID;
-dotenv.config();
 
 const mongoUtils = () => {
   var mu = {};
-  let dbHostName = process.env.dbHostName || '';
-  let dbName = process.env.dbName || '';
-  let dbUser = process.env.dbUser || '';
-  let dbPassword = process.env.dbPassword || '';
+  let dbUrl = process.env.DB_URL || '';
+  let dbName = process.env.DB_NAME || '';
 
   mu.connect = () => {
-    const url = `mongodb+srv://${dbUser}:${dbPassword}@${dbHostName}?retryWrites=true&w=majority`;
-    console.log(url);
-
-    const client = new MongoClient(url, { useNewUrlParser: true });
+    const client = new MongoClient(dbUrl, { useNewUrlParser: true });
     return client.connect();
   };
 
@@ -29,6 +21,12 @@ const mongoUtils = () => {
         console.log('cerrando cliente');
         client.close();
       });
+  };
+
+  mu.createTeam = (client, team) => {
+    const teams = client.db(dbName).collection('teams');
+    return teams.insert(team)
+      .finally(() => client.close());
   };
 
   return mu;

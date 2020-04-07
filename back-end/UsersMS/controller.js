@@ -43,5 +43,5 @@ app.get("/", function (req, res) {
   });
 });
 
-app.use(express.static(__dirname + "/"));
+app.use(express.static(__dirname + "front-end/build"));
 module.exports = app;

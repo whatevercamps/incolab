@@ -1,7 +1,7 @@
 import React from 'react';
 import "../index.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faUsers, faProjectDiagram }from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faUsers, faProjectDiagram }from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => (
   <div className="Navbar">
@@ -17,7 +17,7 @@ const Navbar = () => (
         <a href="/"><i><FontAwesomeIcon icon={faProjectDiagram} ></FontAwesomeIcon></i></a> 
       </div>
       <div className="col-4 login">
-        <a href="/">Sign in</a>
+        <a href="#">Sign in</a>
         <button className="btn">Sign up</button>
       </div>
     </nav>  

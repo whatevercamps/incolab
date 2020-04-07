@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Sen&display=swap');
 
+/* Navbar Styles */
+
 .Navbar .navbar{
   background-color: #232426;
   color: #ffffff;
@@ -49,4 +51,105 @@
 
 .Navbar .login{
   text-align: end;
+}
+
+/* Register Styles */
+
+.Register .registerForm {
+  background-color: #cccccc;
+}
+
+.Register .registerForm label,button,h2{
+  font-family: 'Sen', sans-serif;
+}
+
+.Register .registerForm button{
+  background-color: #F35048;
+  border: none;
+}
+
+.Register .registerForm input,a,p{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.Register .registerForm input{
+  font-size: 14px;
+}
+
+.Register .container{
+  margin-top: 20px;
+  width: 50%;
+}
+
+.Register .registerForm{
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.Register .registerForm .but{
+  text-align: center;
+}
+
+.Register .registerForm button{
+  width: 40%;
+}
+
+.Register .registerForm a,p{
+  font-size: 14px;
+}
+
+/* Login Styles */
+
+.Login .loginForm {
+  background-color: #cccccc;
+}
+
+.Login .loginForm label,button,h2{
+  font-family: 'Sen', sans-serif;
+}
+
+.Login .loginForm button{
+  background-color: #F35048;
+  border: none;
+}
+
+.Login .loginForm .butG{
+  background-color: #ffffff;
+  border: none;
+  color: #1a73e8;
+}
+
+.Login .loginForm input,a,p{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.Login .loginForm input{
+  font-size: 14px;
+}
+
+.Login .container{
+  margin-top: 20px;
+  width: 50%;
+}
+
+.Login .loginForm{
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.Login .loginForm .but{
+  text-align: center;
+}
+
+.Login .loginForm button{
+  width: 40%;
+}
+
+.Login .loginForm a,p{
+  font-size: 14px;
+}
+
+.Login .loginForm p{
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
