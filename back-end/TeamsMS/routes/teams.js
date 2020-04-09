@@ -17,11 +17,35 @@ const buildQuery = (query) => ({
 
 /* GET teams. */
 router.get("/getTeams", (req, res) => {
-  const query = buildQuery(req.query.name);
+  const query = buildQuery({ name: req.query.name });
   mu.connect()
     .then((client) => mu.getTeams(client, query))
-    .then((teams) => res.render("teams", { teams }));
+    .then((teams) => res.json(teams));
 });
+
+router.get(
+  "/getAuthTeams",
+  passport.authenticate("jwt", {
+    session: false,
+  }),
+  (req, res) => {
+    mu.connect()
+      .then((client) => mu.getTeamsByUserId(client, req.user._id))
+      .then((teams) => res.json(teams));
+  }
+);
+
+router.get(
+  "getTeam/:id",
+  passport.authenticate("jwt", {
+    session: false,
+  }),
+  (req, res) => {
+    mu.connect().then((client) =>
+      client.getTeamById(client, req.params.id).then((team) => res.json(team))
+    );
+  }
+);
 
 /* POST create a team */
 router.post(

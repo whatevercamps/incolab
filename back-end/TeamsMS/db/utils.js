@@ -24,6 +24,26 @@ const mongoUtils = () => {
       });
   };
 
+  mu.getTeamsByUserId = (client, user_id) => {
+    const teamsHandler = client.db(dbName).collection("teams");
+    const query = { _id: new ObjectID(user_id || "") };
+    return teamsHandler
+      .find(query)
+      .toArray()
+      .finally(() => {
+        console.log("cerrando cliente");
+        client.close();
+      });
+  };
+
+  mu.getTeamById = (client, id) => {
+    const teamsHandler = client.db(dbName).collection("teams");
+    return teamsHandler.findOne({ _id: new ObjectID(id || "") }).finally(() => {
+      console.log("cerrando cliente");
+      client.close();
+    });
+  };
+
   mu.createTeam = (client, team, user) => {
     const newTeam = {
       name: team.name,
