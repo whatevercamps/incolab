@@ -7,6 +7,7 @@ const Teams = () => (
   <div className="Teams">
     <Navbar/>
     <Sidebar/>
+    <p>Hola</p>
   </div>
 );
 

@@ -1,6 +1,8 @@
 /**
  * Module dependencies.
  */
+const dotenv = require('dotenv');
+dotenv.config();
 
 var app = require('./controller');
 var http = require('http');
