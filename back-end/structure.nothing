@@ -2,6 +2,7 @@
   "teams": [
     {
       "name": String,
+      "tags 
       "projects": [{
         "name": String,
         "created": date,
