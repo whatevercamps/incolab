@@ -1,25 +1,51 @@
 {
-  "equipos": [
+  "teams": [
     {
-      "name": "equipo papita",
-      "proyectos": [{
-        "nombre": "",
-        "created": "2020-89-22",
-        "descripcion": "askd",
-        "privado": true,
-        "link": "kasd",
-        "tags": ["react", "NLP"]
+      "name": String,
+      "projects": [{
+        "name": String,
+        "created": date,
+        "description": String,
+        "access_users": [<userid>],
+        "links": [{
+          "name": String
+          "url": String
+        }],
+        milestiones: [{
+          descrp: String,
+          due: date
+          }]
+        "tags": [String]
       }],
-      "usuarios":[{
-        "userid": 78123713,
-        "nombre": "kadlk"
+      "users":[{
+        _id: ObjectID,
+        "name": String
+        role: String
       }]
     }
   ],
 
-  "usuarios": [{
-      "intereses": ["react"],
-      "credentials":{}
+  "users": [{
+      "tags": [String],
+      "credentials":{
+
+      },
+      "name": String
+  }],
+
+  "projects": [{
+    "name": String,
+    "team": {
+      _id: ObjectID,
+      "name": String
+      },
+    "created": date,
+    "description": String,
+    "tags": [String],
+    "links": [{
+      "name": String
+      "url": String
+      }]
   }]
 }
 

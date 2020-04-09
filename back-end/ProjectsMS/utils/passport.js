@@ -7,7 +7,6 @@ module.exports = function (passport) {
   let opts = {};
   opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
   opts.secretOrKey = process.env.SECRET || "";
-  console.log("llego al middleware");
   passport.use(
     new JwtStrategy(opts, (jwt_payload, done) => {
       model

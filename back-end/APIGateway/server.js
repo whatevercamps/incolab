@@ -1,15 +1,14 @@
-var app = require("./controller");
-var http = require("http");
+const http = require("http");
+var app = require("./routes");
 
-const PORT = process.env.PORT || 3029;
-app.set("port", PORT);
+const PORT = process.env.PORT || 8080;
 
 var server = http.createServer(app);
 
 server.listen(PORT);
 server.on("error", onErrorHandler);
 server.on("listening", function () {
-  console.log(`Projects Service listening on ${PORT}`);
+  console.log(`APIGateway Micro Service listening on ${PORT}`);
 });
 
 function onErrorHandler(error) {
