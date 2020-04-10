@@ -1,55 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Sen&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Sen&display=swap");
 
 /* Navbar Styles */
 
-.Navbar .navbar{
+.Navbar .navbar {
   background-color: #232426;
   color: #ffffff;
-  font-family: 'Sen', sans-serif;
+  font-family: "Sen", sans-serif;
 }
 
-.Navbar .icons i{
+.Navbar .icons i {
   margin: 0 25px 0 25px;
 }
 
-.Navbar .icons i:hover{
-  color: #6D93CA;
+.Navbar .icons i:hover {
+  color: #6d93ca;
 }
 
-.Navbar .icons .active{
-  color: #6D93CA;
+.Navbar .icons .active {
+  color: #6d93ca;
 }
 
-.Navbar .icons{
+.Navbar .icons {
   text-align: center;
 }
 
-.Navbar .search{
-  text-align: left
+.Navbar .search {
+  text-align: left;
 }
 
-.Navbar .search input{
+.Navbar .search input {
   border-radius: 20px;
 }
 
-.Navbar a{
+.Navbar a {
   color: #ffffff;
   margin: 0 10px 0 10px;
 }
 
-.Navbar button{
+.Navbar button {
   margin: 0 10px 0 10px;
   color: #ffffff;
-  background-color: #6D93CA;
+  background-color: #6d93ca;
   border-radius: 20px;
 }
 
-.Navbar button:hover{
-  background-color: #A4B7D9;
+.Navbar button:hover {
+  background-color: #a4b7d9;
   color: #ffffff;
 }
 
-.Navbar .login{
+.Navbar .login {
   text-align: end;
 }
 
@@ -59,42 +59,47 @@
   background-color: #cccccc;
 }
 
-.Register .registerForm label,button,h2{
-  font-family: 'Sen', sans-serif;
+.Register .registerForm label,
+button,
+h2 {
+  font-family: "Sen", sans-serif;
 }
 
-.Register .registerForm button{
-  background-color: #F35048;
+.Register .registerForm button {
+  background-color: #f35048;
   border: none;
 }
 
-.Register .registerForm input,a,p{
-  font-family: 'Montserrat', sans-serif;
+.Register .registerForm input,
+a,
+p {
+  font-family: "Montserrat", sans-serif;
 }
 
-.Register .registerForm input{
+.Register .registerForm input {
   font-size: 14px;
 }
 
-.Register .container{
+.Register .container {
   margin-top: 20px;
   width: 50%;
 }
 
-.Register .registerForm{
+.Register .registerForm {
   padding: 20px;
   border-radius: 10px;
 }
 
-.Register .registerForm .but{
+.Register .registerForm .but {
   text-align: center;
 }
 
-.Register .registerForm button{
+.Register .registerForm button {
   width: 40%;
 }
 
-.Register .registerForm a,p{
+.Register .registerForm a,
+p {
   font-size: 14px;
 }
 
@@ -104,52 +109,241 @@
   background-color: #cccccc;
 }
 
-.Login .loginForm label,button,h2{
-  font-family: 'Sen', sans-serif;
+.Login .loginForm label,
+button,
+h2 {
+  font-family: "Sen", sans-serif;
 }
 
-.Login .loginForm button{
-  background-color: #F35048;
+.Login .loginForm button {
+  background-color: #f35048;
   border: none;
 }
 
-.Login .loginForm .butG{
+.Login .loginForm .butG {
   background-color: #ffffff;
   border: none;
   color: #1a73e8;
 }
 
-.Login .loginForm input,a,p{
-  font-family: 'Montserrat', sans-serif;
+.Login .loginForm input,
+a,
+p {
+  font-family: "Montserrat", sans-serif;
 }
 
-.Login .loginForm input{
+.Login .loginForm input {
   font-size: 14px;
 }
 
-.Login .container{
+.Login .container {
   margin-top: 20px;
   width: 50%;
 }
 
-.Login .loginForm{
+.Login .loginForm {
   padding: 20px;
   border-radius: 10px;
 }
 
-.Login .loginForm .but{
+.Login .loginForm .but {
   text-align: center;
 }
 
-.Login .loginForm button{
+.Login .loginForm button {
   width: 40%;
 }
 
-.Login .loginForm a,p{
+.Login .loginForm a,
+p {
   font-size: 14px;
 }
 
-.Login .loginForm p{
+.Login .loginForm p {
   margin-top: 6px;
   margin-bottom: 6px;
+}
+
+/* Teams Sidebar Styles */
+
+.TeamsSidebar {
+  background-color: #797a8b;
+  max-width: 20vw;
+  height: 100vh;
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.TeamsSidebar .teamsList h3 {
+  color: #ffffff;
+  font-family: "Sen", sans-serif;
+  padding-top: 15px;
+}
+
+.TeamsSidebar .teamsList .btn {
+  background-color: #f35048;
+  color: #ffffff;
+  border-radius: 15px;
+}
+
+.TeamsSidebar .teamsList .createButton {
+  text-align: center;
+}
+
+.TeamsSidebar .teamsList hr {
+  border-color: #ffffff;
+  width: 90%;
+}
+
+.TeamsSidebar ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.TeamsSidebar li {
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Team Detail Styles */
+
+.TeamDetail {
+  max-width: 50vw;
+  float: left;
+  margin-left: 30px;
+  padding-top: 15px;
+}
+
+.TeamDetail p {
+  color: #232426;
+}
+
+.TeamDetail h1 {
+  font-weight: bold;
+}
+
+.TeamDetail h1,
+h3,
+h4 {
+  font-family: "Sen", sans-serif;
+}
+
+.TeamDetail h4 {
+  color: #232426;
+}
+
+.TeamDetail p {
+  font-family: "Montserrat", sans-serif;
+  color: #797a8b;
+}
+
+.TeamDetail span {
+  border-radius: 10px;
+  margin: 5px;
+  color: #757272;
+  background-color: #d8d1d1;
+  padding: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.TeamDetail span:hover {
+  color: #ffffff;
+  background-color: #797a8b;
+}
+
+.TeamDetail ul.timeline {
+  list-style-type: none;
+  margin-bottom: 0px;
+}
+
+.TeamDetail ul.timeline:before {
+  content: " ";
+  background: #d4d9df;
+  display: inline-block;
+  position: absolute;
+  left: 29px;
+  width: 2px;
+  height: 100%;
+  z-index: 400;
+}
+
+.TeamDetail ul.timeline > li {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.TeamDetail ul.timeline > li:before {
+  content: " ";
+  background: white;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #6d93ca;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
+}
+
+.TeamDetail a {
+  color: #6d93ca;
+}
+
+.TeamDetail a:hover {
+  color: #6d93ca;
+}
+
+.TeamDetail .milestones ul .lastLi {
+  margin-bottom: 0px;
+}
+
+.TeamDetail .milestones ul .lastLi p {
+  margin-bottom: 0px;
+}
+
+/* Teams Proyects Styles */
+
+.TeamsProyects {
+  padding-top: 15px;
+  margin-left: 30px;
+  float: left;
+}
+
+.TeamsProyects .btn {
+  background-color: #f35048;
+  color: #ffffff;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.TeamsProyects .createButton {
+  text-align: center;
+}
+
+.TeamsProyects h1 {
+  color: #232426;
+  font-family: "Sen", sans-serif;
+  font-weight: bold;
+  text-align: left;
+}
+
+.TeamsProyects p {
+  color: #797a8b;
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+}
+
+.TeamsProyects ul {
+  list-style: none;
+  text-align: center;
+  padding-left: 0px;
+}
+
+.TeamsProyects li {
+  color: #232426;
+  font-family: "Montserrat", sans-serif;
+  padding: 5px 0px 5px 0px;
 }
