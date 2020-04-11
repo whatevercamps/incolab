@@ -2,12 +2,6 @@ import React, { useState } from "react";
 import "../index.css";
 
 const TeamDetail = () => {
-  const [clickForm, setClickForm] = useState(false);
-
-  const displayCreateForm = () => {
-    setClickForm(true);
-  };
-
   return (
     <div className='TeamDetail'>
       <h1>Team Name</h1>
