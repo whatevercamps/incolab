@@ -53,6 +53,17 @@
   text-align: end;
 }
 
+.Navbar .signInBut {
+  background-color: transparent;
+  border: none;
+}
+
+.Navbar .signInBut:hover {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+}
+
 /* Register Styles */
 
 .Register .registerForm {
@@ -171,8 +182,8 @@ p {
   max-width: 20vw;
   height: 100vh;
   float: left;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .TeamsSidebar .teamsList h3 {
@@ -189,6 +200,7 @@ p {
 
 .TeamsSidebar .teamsList .createButton {
   text-align: center;
+  padding-bottom: 10px;
 }
 
 .TeamsSidebar .teamsList hr {
@@ -206,10 +218,48 @@ p {
   font-family: "Montserrat", sans-serif;
 }
 
+.TeamsSidebar .createForm {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.TeamsSidebar .createForm .but {
+  text-align: center;
+}
+
+.TeamsSidebar .createForm input {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+.TeamsSidebar .createForm textarea {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+.TeamsSidebar .createForm label {
+  font-family: "Sen", sans-serif;
+  color: #ffffff;
+}
+
+.TeamsSidebar.createForm button {
+  width: 40%;
+}
+
+.TeamsSidebar .createForm a,
+p {
+  font-size: 14px;
+}
+
+.TeamsSidebar .createForm p {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
 /* Team Detail Styles */
 
 .TeamDetail {
-  max-width: 50vw;
+  max-width: 45vw;
   float: left;
   margin-left: 30px;
   padding-top: 15px;
