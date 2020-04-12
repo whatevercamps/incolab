@@ -64,7 +64,8 @@ router.post(
       });
     }
     const newTeam = {
-      name: req.name,
+      name: req.body.name,
+      description: req.body.description,
       tags: req.body.tags || [],
     };
     mu.connect()

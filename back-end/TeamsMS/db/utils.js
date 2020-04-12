@@ -47,6 +47,7 @@ const mongoUtils = () => {
   mu.createTeam = (client, team, user) => {
     const newTeam = {
       name: team.name,
+      description: team.description,
       tags: team.tags,
       users: [
         { _id: new ObjectID(user._id || ""), name: user.name, role: "Owner" },

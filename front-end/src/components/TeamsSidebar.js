@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../index.css";
 
-const TeamsSidebar = () => {
+const TeamsSidebar = ({ displayDetail }) => {
   const [clickForm, setClickForm] = useState(false);
+  const [teams, setTeams] = useState([]);
 
   const displayCreateForm = () => {
     setClickForm(true);
@@ -11,14 +12,26 @@ const TeamsSidebar = () => {
     }
   };
 
+  useEffect(() => {
+    fetch("/teams/getTeams")
+      .then((res) => res.json())
+      .then((teams) => setTeams(teams));
+  }, []);
+
   return (
     <div className='TeamsSidebar'>
       <div className='teamsList'>
         <h3>My Teams</h3>
         <ul>
-          <li>Team 1</li>
-          <li>Team 2</li>
-          <li>Team 3</li>
+          {teams.length == 0
+            ? "Loading teams ..."
+            : teams.map((team) => (
+                <li>
+                  <button className='teamBut' onClick={displayDetail}>
+                    {team.name}
+                  </button>
+                </li>
+              ))}
         </ul>
         <div className='createButton'>
           <button className='btn' onClick={displayCreateForm}>

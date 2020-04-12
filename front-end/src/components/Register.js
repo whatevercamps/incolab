@@ -10,6 +10,7 @@ const Register = () => (
           <label for='exampleInputEmail1'>Name</label>
           <input
             type='text'
+            name='name'
             class='form-control'
             id='exampleInputEmail1'
             placeholder='Enter name'
@@ -19,6 +20,7 @@ const Register = () => (
           <label for='exampleInputEmail1'>Email address</label>
           <input
             type='email'
+            name='email'
             class='form-control'
             id='exampleInputEmail1'
             aria-describedby='emailHelp'
@@ -29,6 +31,7 @@ const Register = () => (
           <label for='exampleInputPassword1'>Password</label>
           <input
             type='password'
+            name='password'
             class='form-control'
             id='exampleInputPassword1'
             placeholder='Password'
@@ -40,7 +43,7 @@ const Register = () => (
           </p>
         </div>
         <div className='but'>
-          <button type='submit' className='btn btn-primary'>
+          <button type='submit' className='btn btn-primary' value='Submit'>
             REGISTER
           </button>
         </div>
