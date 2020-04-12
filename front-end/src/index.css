@@ -6,6 +6,12 @@
   background-color: #232426;
   color: #ffffff;
   font-family: "Sen", sans-serif;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.Navbar img {
+  width: 90%;
 }
 
 .Navbar .icons i {
@@ -26,6 +32,12 @@
 
 .Navbar .search {
   text-align: left;
+  padding-left: 0px;
+}
+
+.Navbar .logo {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .Navbar .search input {

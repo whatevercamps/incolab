@@ -6,6 +6,7 @@ import {
   faUsers,
   faProjectDiagram,
 } from "@fortawesome/free-solid-svg-icons";
+import logo from "./Incolab-logo.png";
 
 const Navbar = ({ displayLog, displayReg, displayTeam, displayHome }) => {
   const [user, setUser] = useState(null);
@@ -16,11 +17,35 @@ const Navbar = ({ displayLog, displayReg, displayTeam, displayHome }) => {
       .then((user) => setUser(user));
   }, []);
 
+  const turnActiveTeams = () => {
+    document.getElementById("teams").className = "active";
+    document.getElementById("home").className = "";
+    document.getElementById("proyects").className = "";
+    document.title = "Incolab - Teams";
+  };
+
+  const turnActiveHome = () => {
+    document.getElementById("teams").className = "";
+    document.getElementById("home").className = "active";
+    document.getElementById("proyects").className = "";
+    document.title = "Incolab - Home";
+  };
+
+  const turnActiveProyects = () => {
+    document.getElementById("teams").className = "";
+    document.getElementById("home").className = "";
+    document.getElementById("proyects").className = "active";
+    document.title = "Incolab - Proyects";
+  };
+
   return (
     <div className='Navbar'>
       {!user ? (
         <nav className='navbar'>
-          <div className='col-4 search'>
+          <div className='col-1 logo'>
+            <img src={logo}></img>
+          </div>
+          <div className='col-3 search'>
             <form className='form-inline my-2 my-lg-0'>
               <input
                 className='form-control mr-sm-2'
@@ -30,19 +55,19 @@ const Navbar = ({ displayLog, displayReg, displayTeam, displayHome }) => {
               />
             </form>
           </div>
-          <div className='col-4 icons'>
+          <div className='col-4 icons' id='icons'>
             <a onClick={displayHome}>
-              <i className='active'>
+              <i className='active' id='home' onClick={turnActiveHome}>
                 <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
               </i>
             </a>
             <a onClick={displayTeam}>
-              <i>
+              <i id='teams' onClick={turnActiveTeams}>
                 <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>
               </i>
             </a>
-            <a href='/'>
-              <i>
+            <a>
+              <i id='proyects' onClick={turnActiveProyects}>
                 <FontAwesomeIcon icon={faProjectDiagram}></FontAwesomeIcon>
               </i>
             </a>
