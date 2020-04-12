@@ -20,25 +20,31 @@ const Home = (props) => {
         <div className='col-md-3'>
           <Login />
         </div>
-        {props.featuredProjects.forEach((project) => (
-          <div className='col-md-3'>
-            <ProjectCard project={project} />
-          </div>
-        ))}
+        {
+          /*props.featuredProjects*/ [].forEach((project) => (
+            <div className='col-md-3'>
+              <ProjectCard project={project} />
+            </div>
+          ))
+        }
       </div>
       <div className='row related'>
-        {props.relatedProjects.forEach((project) => (
-          <div className='col-md-3'>
-            <ProjectCard project={project} />
-          </div>
-        ))}
+        {
+          /*props.relatedProjects*/ [].forEach((project) => (
+            <div className='col-md-3'>
+              <ProjectCard project={project} />
+            </div>
+          ))
+        }
       </div>
       <div className='row editorChoice'>
-        {props.editorChoiceProjects.forEach((project) => (
-          <div className='col-md-3'>
-            <ProjectCard project={project} />
-          </div>
-        ))}
+        {
+          /*props.editorChoiceProjects*/ [].forEach((project) => (
+            <div className='col-md-3'>
+              <ProjectCard project={project} />
+            </div>
+          ))
+        }
       </div>
     </div>
   );
