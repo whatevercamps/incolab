@@ -198,6 +198,16 @@ p {
   border-radius: 15px;
 }
 
+.TeamsSidebar .teamsList .teamBut {
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+}
+
+.TeamsSidebar .teamsList .teamBut:hover {
+  text-decoration: underline;
+}
+
 .TeamsSidebar .teamsList .createButton {
   text-align: center;
   padding-bottom: 10px;

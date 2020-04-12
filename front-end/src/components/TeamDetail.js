@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../index.css";
 
 const TeamDetail = () => {
+  const [team, setTeam] = useState();
+
+  useEffect((id) => {
+    fetch("/teams/getTeam/" + id)
+      .then((res) => res.json())
+      .then((team) => setTeam(team));
+  }, []);
   return (
     <div className='TeamDetail'>
-      <h1>Team Name</h1>
-      <h3>Description</h3>
+      <h1>{team.name}</h1>
+      <h3>{team.description}</h3>
       <p>
         Lorem nostrud irure eiusmod et pariatur dolore deserunt incididunt velit
         ex in do elit incididunt. Ex duis adipisicing aute officia irure mollit
@@ -53,7 +60,7 @@ const TeamDetail = () => {
       <br></br>
       <hr></hr>
       <h4>Tags</h4>
-      <span>React</span>
+      <span>{team.tags[0]}</span>
       <span>Node JS</span>
       <span>Javascript</span>
       <span>Innovation</span>
