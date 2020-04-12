@@ -15,6 +15,7 @@ const passportMiddleware = require("./utils/passport");
 
 const app = express();
 const teamsRouter = require("./routes/teams");
+const projectsRouter = require("./routes/projects");
 
 app.use(bodyParser.json());
 app.use(morgan("dev"));
@@ -30,5 +31,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "front-end/build")));
 
 app.use("/teams", teamsRouter);
+app.use("/projects", projectsRouter);
 
 module.exports = app;

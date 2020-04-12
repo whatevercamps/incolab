@@ -7,7 +7,7 @@ import {
   faProjectDiagram,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = ({ displayLog, displayReg, displayTeam }) => {
+const Navbar = ({ displayLog, displayReg, displayTeam, displayHome }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Navbar = ({ displayLog, displayReg, displayTeam }) => {
             </form>
           </div>
           <div className='col-4 icons'>
-            <a href='/'>
+            <a onClick={displayHome}>
               <i className='active'>
                 <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
               </i>

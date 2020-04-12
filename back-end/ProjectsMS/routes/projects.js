@@ -1,5 +1,4 @@
 const express = require("express");
-const inputValidator = require("../utils/input-validator");
 
 const ModelGenerator = require("../models/project");
 const model = ModelGenerator();
@@ -28,8 +27,6 @@ router.get("/projects", (req, res) => {
         error: err,
       });
     });
-
-  res.send("holi sin auth");
 });
 
 module.exports = router;

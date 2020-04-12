@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const mongoUtils = require("../db/utils.js");
-const mu = mongoUtils();
+const ModelGenerator = require("../models/team.js");
+const mu = ModelGenerator();
 
 const passport = require("passport");
 const inputValidator = require("../utils/input-validator");

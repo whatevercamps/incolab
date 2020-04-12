@@ -3,17 +3,17 @@
 const MongoClient = require("mongodb").MongoClient;
 const ObjectID = require("mongodb").ObjectID;
 
-const mongoUtils = () => {
-  var mu = {};
+const ModelGenerator = () => {
+  var model = {};
   let dbUrl = process.env.DB_URL || "";
   let dbName = process.env.DB_NAME || "";
 
-  mu.connect = () => {
+  model.connect = () => {
     const client = new MongoClient(dbUrl, { useNewUrlParser: true });
     return client.connect();
   };
 
-  mu.getTeams = (client, query) => {
+  model.getTeams = (client, query) => {
     const teamsHandler = client.db(dbName).collection("teams");
     return teamsHandler
       .find(query)
@@ -24,9 +24,11 @@ const mongoUtils = () => {
       });
   };
 
-  mu.getTeamsByUserId = (client, user_id) => {
+  model.getTeamsByUserId = (client, user_id) => {
     const teamsHandler = client.db(dbName).collection("teams");
-    const query = { _id: new ObjectID(user_id || "") };
+    const query = {
+      users: { $elemMatch: { _id: new ObjectID(user_id || "") } },
+    };
     return teamsHandler
       .find(query)
       .toArray()
@@ -36,7 +38,7 @@ const mongoUtils = () => {
       });
   };
 
-  mu.getTeamById = (client, id) => {
+  model.getTeamById = (client, id) => {
     const teamsHandler = client.db(dbName).collection("teams");
     return teamsHandler.findOne({ _id: new ObjectID(id || "") }).finally(() => {
       console.log("cerrando cliente");
@@ -44,11 +46,12 @@ const mongoUtils = () => {
     });
   };
 
-  mu.createTeam = (client, team, user) => {
+  model.createTeam = (client, team, user) => {
     const newTeam = {
       name: team.name,
       description: team.description,
       tags: team.tags,
+      projects: [],
       users: [
         { _id: new ObjectID(user._id || ""), name: user.name, role: "Owner" },
       ],
@@ -57,7 +60,7 @@ const mongoUtils = () => {
     return teams.insert(newTeam).finally(() => client.close());
   };
 
-  mu.getUserById = (client, id) => {
+  model.getUserById = (client, id) => {
     const UsersCollection = client.db(dbName).collection("users");
     return UsersCollection.find({ _id: new ObjectID(id || "") })
       .toArray()
@@ -66,7 +69,7 @@ const mongoUtils = () => {
       });
   };
 
-  return mu;
+  return model;
 };
 
-module.exports = mongoUtils;
+module.exports = ModelGenerator;

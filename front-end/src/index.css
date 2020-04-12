@@ -407,3 +407,18 @@ h4 {
   font-family: "Montserrat", sans-serif;
   padding: 5px 0px 5px 0px;
 }
+
+.Home .r {
+  background-color: firebrick;
+}
+
+.Home .g {
+  background-color: forestgreen;
+}
+.Home .b {
+  background-color: steelblue;
+}
+
+.Home .row {
+  margin-top: 7rem;
+}
