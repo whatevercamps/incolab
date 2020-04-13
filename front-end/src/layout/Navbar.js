@@ -12,7 +12,7 @@ const Navbar = ({ displayLog, displayReg, displayTeam, displayHome }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/users/profile")
+    fetch("/profile")
       .then((res) => res.json())
       .then((data) => {
         if (data && data.user) setUser(data.user);

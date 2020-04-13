@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <div className='Login'>
       <div className='container'>
-        <form action='/users/authenticate' method='post' className='loginForm'>
+        <form action='/authenticate' method='post' className='loginForm'>
           <h2 className='text-center'>Sign in</h2>
           <div className='form-group'>
             <label htmlFor='exampleInputEmail1'>Email address</label>

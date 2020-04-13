@@ -96,7 +96,7 @@ router.post("/authenticate", inputValidator("authUser"), (req, res) => {
             return res
               .status(200)
               .cookie("jwt", token, { httpOnly: true, secure: false })
-              .redirect(200, "/");
+              .redirect("/");
           } else {
             return res.json({
               success: false,
