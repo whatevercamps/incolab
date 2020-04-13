@@ -85,7 +85,10 @@ const Navbar = ({ displayLog, displayReg, displayTeam, displayHome }) => {
         </nav>
       ) : (
         <nav className='navbar'>
-          <div className='col-4 search'>
+          <div className='col-1 logo'>
+            <img src={logo}></img>
+          </div>
+          <div className='col-3 search'>
             <form className='form-inline my-2 my-lg-0'>
               <input
                 className='form-control mr-sm-2'
@@ -97,23 +100,23 @@ const Navbar = ({ displayLog, displayReg, displayTeam, displayHome }) => {
           </div>
           <div className='col-4 icons'>
             <a href='/'>
-              <i className='active'>
+              <i className='active' id='home' onClick={turnActiveHome}>
                 <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
               </i>
             </a>
             <a onClick={displayTeam}>
-              <i>
+              <i id='teams' onClick={turnActiveTeams}>
                 <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>
               </i>
             </a>
-            <a href='/'>
-              <i>
+            <a>
+              <i id='proyects' onClick={turnActiveProyects}>
                 <FontAwesomeIcon icon={faProjectDiagram}></FontAwesomeIcon>
               </i>
             </a>
           </div>
           <div className='col-4 login'>
-            <span>Hello {user.name}</span>
+            <span>Hello {user.name}!</span>
             <button className='btn'>Logout</button>
           </div>
         </nav>

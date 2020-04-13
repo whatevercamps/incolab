@@ -6,14 +6,14 @@ const userServiceProxy = httpProxy("http://localhost:3030/", {
     return `/users${req.url}`;
   },
 });
-const teamsServiceProxy = httpProxy("http://localhost:3029/", {
+const teamsServiceProxy = httpProxy("http://localhost:3028/", {
   proxyReqPathResolver: (req) => {
     const url = `/teams${req.url}`;
     console.log("url", url);
     return url;
   },
 });
-const projectsServiceProxy = httpProxy("http://localhost:3028/");
+const projectsServiceProxy = httpProxy("http://localhost:3029/");
 
 const app = express();
 
