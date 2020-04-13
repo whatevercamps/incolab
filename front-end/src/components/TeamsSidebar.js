@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../index.css";
 
 const TeamsSidebar = ({ changeTeamId }) => {
   const [clickForm, setClickForm] = useState(false);
   const [teams, setTeams] = useState([]);
+  const formRef = useRef();
 
   const displayCreateForm = () => {
     setClickForm(true);
@@ -17,6 +18,29 @@ const TeamsSidebar = ({ changeTeamId }) => {
       .then((res) => res.json())
       .then((teams) => setTeams(teams));
   }, []);
+
+  const onClick = (evt) => {
+    evt.preventDefault();
+    const formData = new FormData(formRef.current);
+    const tags = formData.get("tags");
+    const tagsList = tags.split(",");
+    const name = formData.get("name");
+    const description = formData.get("description");
+    const data = { name: name, description: description, tags: tagsList };
+
+    fetch("/createTeam", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <div className='TeamsSidebar'>
@@ -44,7 +68,11 @@ const TeamsSidebar = ({ changeTeamId }) => {
           </button>
         </div>
         {clickForm === true && (
-          <form action='/createTeam' method='post' className='createForm'>
+          <form
+            onSubmit={(evt) => onClick(evt)}
+            className='createForm'
+            ref={formRef}
+          >
             <div className='form-group'>
               <label>Name</label>
               <input
@@ -52,6 +80,7 @@ const TeamsSidebar = ({ changeTeamId }) => {
                 className='form-control'
                 id='exampleInputName'
                 placeholder='Enter a name'
+                name='name'
               />
             </div>
             <div className='form-group'>
@@ -61,6 +90,7 @@ const TeamsSidebar = ({ changeTeamId }) => {
                 className='form-control'
                 id='exampleInputDescription'
                 placeholder='Write a description of your team'
+                name='description'
               />
             </div>
             <div className='form-group'>
@@ -70,6 +100,7 @@ const TeamsSidebar = ({ changeTeamId }) => {
                 className='form-control'
                 id='exampleInputTags'
                 placeholder='Enter some tags (,)'
+                name='tags'
               />
             </div>
             <div className='but'>

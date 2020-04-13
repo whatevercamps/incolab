@@ -9,7 +9,7 @@ const TeamsProyects = ({ teamId, userId }) => {
   //   if (teamId && userId)
   //     fetch("/getProjectsTeams")
   //       .then((res) => res.json())
-  //       .then((teams) => )
+  //       .then((data) => (data.team._id = teamId))
   //       .then((projects) => setProjects(projects));
   // }, []);
 

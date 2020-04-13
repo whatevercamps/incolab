@@ -36,8 +36,7 @@ app.get("/logout", userServiceProxy);
 
 app.get("/getAuthTeams", teamsServiceProxy);
 app.get("/getTeam/:id", teamsServiceProxy);
-
-app.post("/teams", teamsServiceProxy);
+app.post("/createTeam", teamsServiceProxy);
 
 app.get("/projects", projectsServiceProxy);
 
