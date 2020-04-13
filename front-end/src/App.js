@@ -53,6 +53,7 @@ function App() {
   };
 
   const displaySearch = (search) => {
+    console.log("cambiando search", search);
     setSearch(search);
     setClickHome(false);
     setClickTeam(false);

@@ -514,3 +514,7 @@ h2 {
 .Home .title {
   color: #ffffff;
 }
+
+.ProjectCard .card {
+  margin-top: 2rem;
+}

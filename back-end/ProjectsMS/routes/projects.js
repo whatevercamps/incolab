@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
         return res
           .status(NOT_FOUND_STATUS_CODE)
           .json({ success: false, msg: "projects with query not found" });
-      res.status(OK_STATUS_CODE).json({ success: true, data: projects });
+      res.status(OK_STATUS_CODE).json({ success: true, projects: projects });
     })
     .catch((err) => {
       res.status(INTERNAL_SERVER_ERROR_CODE).json({
