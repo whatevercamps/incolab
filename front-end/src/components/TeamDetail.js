@@ -11,7 +11,7 @@ const TeamDetail = ({ teamId }) => {
       fetch("/getTeam/" + teamId)
         .then((res) => res.json())
         .then((team) => setTeam(team));
-  }, []);
+  }, [teamId]);
   return team ? (
     <div className='TeamDetail'>
       <h1>{team.name}</h1>
@@ -21,7 +21,7 @@ const TeamDetail = ({ teamId }) => {
       <h4>Tags</h4>
       {team.tags &&
         team.tags.length &&
-        team.tags.map((tag) => <span>{tag}</span>)}
+        team.tags.map((tag, i) => <span key={"team" + i}>{tag}</span>)}
     </div>
   ) : (
     <p>Loading team ...</p>

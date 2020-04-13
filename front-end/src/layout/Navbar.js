@@ -71,7 +71,7 @@ const Navbar = ({
       {!user ? (
         <nav className='navbar'>
           <div className='col-1 logo'>
-            <img src={logo}></img>
+            <img src={logo} alt='navbar logo'></img>
           </div>
           <div className='col-3 search' onSubmit={handleSearch}>
             <form className='form-inline my-2 my-lg-0'>
@@ -86,21 +86,21 @@ const Navbar = ({
             </form>
           </div>
           <div className='col-4 icons' id='icons'>
-            <a onClick={displayHome}>
+            <button onClick={displayHome} className='navbarBut'>
               <i className='active' id='home' onClick={turnActiveHome}>
                 <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
               </i>
-            </a>
-            <a onClick={displayTeam}>
+            </button>
+            <button onClick={displayTeam} className='navbarBut'>
               <i id='teams' onClick={turnActiveTeams}>
                 <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>
               </i>
-            </a>
-            <a>
+            </button>
+            <button className='navbarBut'>
               <i id='proyects' onClick={turnActiveProyects}>
                 <FontAwesomeIcon icon={faProjectDiagram}></FontAwesomeIcon>
               </i>
-            </a>
+            </button>
           </div>
           <div className='col-4 login'>
             <button className='signInBut' onClick={displayLog}>
@@ -114,7 +114,7 @@ const Navbar = ({
       ) : (
         <nav className='navbar'>
           <div className='col-1 logo'>
-            <img src={logo}></img>
+            <img src={logo} alt='navbar logo'></img>
           </div>
           <div className='col-3 search'>
             <form className='form-inline my-2 my-lg-0' onSubmit={handleSearch}>
@@ -127,25 +127,25 @@ const Navbar = ({
             </form>
           </div>
           <div className='col-4 icons'>
-            <a href='/'>
+            <button className='navbarBut' onClick={displayHome}>
               <i className='active' id='home' onClick={turnActiveHome}>
                 <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
               </i>
-            </a>
-            <a onClick={displayTeam}>
+            </button>
+            <button onClick={displayTeam} className='navbarBut'>
               <i id='teams' onClick={turnActiveTeams}>
                 <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>
               </i>
-            </a>
-            <a>
+            </button>
+            <button className='navbarBut'>
               <i id='proyects' onClick={turnActiveProyects}>
                 <FontAwesomeIcon icon={faProjectDiagram}></FontAwesomeIcon>
               </i>
-            </a>
+            </button>
           </div>
           <div className='col-4 login'>
             <span>Hello {user.name}!</span>
-            <button className='btn' onSubmit={onLogOut}>
+            <button className='btn' onClick={onLogOut}>
               Logout
             </button>
           </div>

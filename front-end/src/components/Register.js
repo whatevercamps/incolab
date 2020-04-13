@@ -4,42 +4,42 @@ import "../index.css";
 const Register = () => (
   <div className='Register'>
     <div className='container'>
-      <form action='/users/register' method='post' className='registerForm'>
+      <form action='/register' method='post' className='registerForm'>
         <h2 className='text-center'>Sign up</h2>
         <div className='form-group'>
-          <label for='exampleInputEmail1'>Name</label>
+          <label>Name</label>
           <input
             type='text'
             name='name'
-            class='form-control'
+            className='form-control'
             id='exampleInputEmail1'
             placeholder='Enter name'
           />
         </div>
         <div className='form-group'>
-          <label for='exampleInputEmail1'>Email address</label>
+          <label>Email address</label>
           <input
             type='email'
             name='email'
-            class='form-control'
+            className='form-control'
             id='exampleInputEmail1'
             aria-describedby='emailHelp'
             placeholder='Enter email'
           />
         </div>
         <div className='form-group'>
-          <label for='exampleInputPassword1'>Password</label>
+          <label>Password</label>
           <input
             type='password'
             name='password'
-            class='form-control'
+            className='form-control'
             id='exampleInputPassword1'
             placeholder='Password'
           />
         </div>
         <div className='form-group text-center'>
           <p>
-            Already have an account?, <a href='#'>Log in</a>
+            Already have an account?, <button className='logBut'>Log in</button>
           </p>
         </div>
         <div className='but'>

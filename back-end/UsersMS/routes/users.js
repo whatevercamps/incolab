@@ -94,13 +94,11 @@ router.post("/authenticate", inputValidator("authUser"), (req, res) => {
               expiresIn: expiresTime,
             });
             if (req.query["json"] && req.query["json"] == "true")
-              return res
-                .status(OK_STATUS_CODE)
-                .json({
-                  success: true,
-                  msg: "Your token expires in 1 hour",
-                  token: token,
-                });
+              return res.status(OK_STATUS_CODE).json({
+                success: true,
+                msg: "Your token expires in 1 hour",
+                token: token,
+              });
             return res
               .status(OK_STATUS_CODE)
               .cookie("jwt", token, { httpOnly: true, secure: false })
@@ -146,8 +144,8 @@ router.get(
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
   res.json({ ok: true });
+  res.redirect("/");
 });
 
 module.exports = router;

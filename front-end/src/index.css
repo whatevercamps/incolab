@@ -76,6 +76,16 @@
   text-decoration: underline;
 }
 
+.Navbar .navbarBut {
+  background-color: transparent;
+  border: none;
+}
+
+.Navbar .navbarBut:hover {
+  background-color: transparent;
+  border: none;
+}
+
 /* Register Styles */
 
 .Register .registerForm {
@@ -124,6 +134,16 @@ p {
 .Register .registerForm a,
 p {
   font-size: 14px;
+}
+
+.Register .registerForm .logBut {
+  width: 100%;
+  background-color: transparent;
+  color: #1a73e8;
+}
+
+.Register .registerForm .logBut:hover {
+  text-decoration: underline;
 }
 
 /* Login Styles */
