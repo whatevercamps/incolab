@@ -93,8 +93,16 @@ router.post("/authenticate", inputValidator("authUser"), (req, res) => {
             const token = jwt.sign(users[0], process.env.SECRET, {
               expiresIn: expiresTime,
             });
+            if (req.query["json"] && req.query["json"] == "true")
+              return res
+                .status(OK_STATUS_CODE)
+                .json({
+                  success: true,
+                  msg: "Your token expires in 1 hour",
+                  token: token,
+                });
             return res
-              .status(200)
+              .status(OK_STATUS_CODE)
               .cookie("jwt", token, { httpOnly: true, secure: false })
               .redirect("/");
           } else {

@@ -14,8 +14,8 @@ const ModelGenerator = () => {
   };
 
   model.createUser = (client, user) => {
-    const playersHandler = client.db(dbName).collection("users");
-    playersHandler.insert(user).finally(() => {
+    const UsersCollection = client.db(dbName).collection("users");
+    return UsersCollection.insert(user).finally(() => {
       client.close();
     });
   };

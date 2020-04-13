@@ -3,7 +3,6 @@
 const express = require("express");
 var bodyParser = require("body-parser");
 var morgan = require("morgan");
-const passport = require("passport");
 
 /* ----------------- */
 /*  APP CONFIG       */
@@ -11,7 +10,6 @@ const passport = require("passport");
 
 const app = express();
 const projectsRouter = require("./routes/projects");
-const passportMiddleware = require("./utils/passport");
 
 app.use(express.json());
 
@@ -26,10 +24,6 @@ app.use(
 app.use(bodyParser.json());
 
 app.use(morgan("dev"));
-
-app.use(passport.initialize());
-app.use(passport.session());
-passportMiddleware(passport);
 
 /* ----------------- */
 /* SERVICE ENDPOINTS */

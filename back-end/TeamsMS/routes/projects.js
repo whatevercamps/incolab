@@ -4,6 +4,7 @@ const inputValidator = require("../utils/input-validator");
 const { validationResult } = require("express-validator");
 
 const passport = require("passport");
+const fetch = require("node-fetch");
 
 const ModelGenerator = require("../models/teamProject");
 const model = ModelGenerator();
@@ -16,7 +17,7 @@ const BAD_REQUEST_CODE = 400;
 const router = express.Router();
 
 router.get(
-  "/getProjectsTeam",
+  "/",
   passport.authenticate("jwt", {
     session: false,
   }),
@@ -50,6 +51,7 @@ router.get(
         });
       })
       .catch((err) => {
+        console.log("error: ", err);
         res.status(INTERNAL_SERVER_ERROR_CODE).json({
           success: false,
           msg: "Internal error retrieving projects",
@@ -60,7 +62,7 @@ router.get(
 );
 
 router.post(
-  "/createProjectTeam",
+  "/",
   passport.authenticate("jwt", {
     session: false,
   }),
@@ -70,17 +72,27 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(BAD_REQUEST_CODE).json({
         success: false,
-        msg: "Team id is required",
+        msg: "Team id and project payload is required",
         error: errors.array(),
       });
     }
 
+    const date = Date.now();
     const project = {
       name: req.body.name,
-      create: Date.now(),
+      create: date,
       description: req.body.description,
       links: req.body.links || [],
       milestones: [],
+      tags: req.body.tags,
+    };
+
+    const publicProject = {
+      teamId: req.query.team_id,
+      name: req.body.name,
+      create: date,
+      description: req.body.description,
+      links: req.body.links || [],
       tags: req.body.tags,
     };
 
@@ -95,6 +107,20 @@ router.post(
           msg: "Project created successfully",
           data: resp,
         });
+        if (req.body.isPrivate === false)
+          fetch("http://localhost:3029/projects", {
+            method: "POST",
+            body: JSON.stringify(publicProject),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (!data || !data.success) {
+                console.log("error creating public project", data);
+              }
+            });
       })
       .catch((err) => {
         return res.status(INTERNAL_SERVER_ERROR_CODE).json({

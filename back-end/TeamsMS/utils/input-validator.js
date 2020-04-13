@@ -30,6 +30,7 @@ module.exports = (method) => {
           .isEmpty(),
         check("links").if(check("links").exists()).isArray({ min: 0, max: 3 }),
         check("tags").exists().isArray({ min: 3, max: 20 }),
+        check("isPrivate").exists().isBoolean(),
       ];
     }
   }

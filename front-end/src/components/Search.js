@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 
-import Login from "./Login";
-import ProjectCard from "./ProjectCard";
 import "../index.css";
 
 const Home = ({ search }) => {
@@ -13,6 +10,7 @@ const Home = ({ search }) => {
     fetch("/projects")
       .then((res) => res.json())
       .then((data) => {
+        console.log("data", data);
         if (data && data.projects)
           setResults(() => results.concat(data.projects));
       });
