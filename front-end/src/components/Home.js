@@ -10,10 +10,6 @@ const Home = (props) => {
   const [relatedProjects, setRelatedProjects] = useState([]);
   const [editorChoiceProjects, setEditorChoiceProjects] = useState([]);
 
-  // useEffect(() => {
-
-  // }, [])
-
   return (
     <div className='Home container'>
       <div className='row'>

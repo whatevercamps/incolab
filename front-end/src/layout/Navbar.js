@@ -14,9 +14,10 @@ const Navbar = ({
   displayTeam,
   displayHome,
   getUserId,
+  displaySearch,
 }) => {
   const [user, setUser] = useState(null);
-
+  const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     fetch("/profile")
       .then((res) => res.json())
@@ -59,6 +60,12 @@ const Navbar = ({
       });
   };
 
+  const handleSearch = (evt) => {
+    const search = searchQuery.trim().split(/[\s,]+/);
+    displaySearch(search);
+    evt.preventDefault();
+  };
+
   return (
     <div className='Navbar'>
       {!user ? (
@@ -66,13 +73,15 @@ const Navbar = ({
           <div className='col-1 logo'>
             <img src={logo}></img>
           </div>
-          <div className='col-3 search'>
+          <div className='col-3 search' onSubmit={handleSearch}>
             <form className='form-inline my-2 my-lg-0'>
               <input
                 className='form-control mr-sm-2'
                 type='search'
                 placeholder='Search'
                 aria-label='Search'
+                value={searchQuery}
+                onChange={(evt) => setSearchQuery(evt.target.value)}
               />
             </form>
           </div>
@@ -108,7 +117,7 @@ const Navbar = ({
             <img src={logo}></img>
           </div>
           <div className='col-3 search'>
-            <form className='form-inline my-2 my-lg-0'>
+            <form className='form-inline my-2 my-lg-0' onSubmit={handleSearch}>
               <input
                 className='form-control mr-sm-2'
                 type='search'

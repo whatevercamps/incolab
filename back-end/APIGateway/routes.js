@@ -13,13 +13,16 @@ const teamsServiceProxy = httpProxy("http://localhost:3028/", {
     return url;
   },
 });
-const projectsServiceProxy = httpProxy("http://localhost:3029/", {
+
+const teamProjectsServiceProxy = httpProxy("http://localhost:3028/", {
   proxyReqPathResolver: (req) => {
     const url = `/projects${req.url}`;
     console.log("url", url);
     return url;
   },
 });
+
+const projectsServiceProxy = httpProxy("http://localhost:3029/");
 
 const app = express();
 
@@ -34,9 +37,11 @@ app.get("/getTeam/:id", teamsServiceProxy);
 
 app.post("/teams", teamsServiceProxy);
 
-app.get("/getProjectsTeam", projectsServiceProxy);
+app.get("/projects", projectsServiceProxy);
 
-app.post("/createProjectTeam", projectsServiceProxy);
+app.get("/getProjectsTeam", teamProjectsServiceProxy);
+
+app.post("/createProjectTeam", teamProjectsServiceProxy);
 
 app.use("*", (req, res) => {
   console.log("req", req.url);
