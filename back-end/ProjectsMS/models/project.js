@@ -20,9 +20,26 @@ const ModelGenerator = () => {
     });
   };
 
-  model.getProjects = (client) => {
+  model.getProjects = (client, q) => {
+    let query = {};
+
+    const buildRgx = (word) => new RegExp(`.*${word}.*`, "i");
+
+    const genSubQuery = (keyword) => {
+      return {
+        $or: [{ name: buildRgx(keyword) }, { tags: buildRgx(keyword) }],
+      };
+    };
+    if (q) {
+      query = { $or: [] };
+      const keywords = q.trim().split(/[\s,]+/);
+      keywords.forEach((keyword) => {
+        query.$or.push(genSubQuery(keyword));
+      });
+    }
+    console.log("query", query);
     return handler(client)
-      .find({})
+      .find(query)
       .toArray()
       .catch(function (e) {
         console.log("catch in model", e);

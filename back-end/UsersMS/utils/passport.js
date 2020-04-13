@@ -1,4 +1,5 @@
 const JwtStrategy = require("passport-jwt").Strategy;
+const ExtractJwt = require("passport-jwt").ExtractJwt;
 const ModelGenerator = require("../models/user");
 const model = ModelGenerator();
 
@@ -8,7 +9,8 @@ module.exports = function (passport) {
     if (req && req.cookies) {
       token = req.cookies["jwt"];
     }
-    return token;
+    console.log("token", token);
+    return token || ExtractJwt.fromAuthHeaderWithScheme("jwt");
   };
 
   let opts = {};

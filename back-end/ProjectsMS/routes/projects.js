@@ -16,7 +16,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   model
     .connect()
-    .then((client) => model.getProjects(client))
+    .then((client) => model.getProjects(client, req.query.query))
     .then((projects) => {
       if (!projects)
         return res

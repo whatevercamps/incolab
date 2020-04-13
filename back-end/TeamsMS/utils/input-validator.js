@@ -17,7 +17,7 @@ module.exports = (method) => {
         check("name")
           .exists()
           .isString()
-          .isLength({ min: 4, max: 12 })
+          .isLength({ min: 4, max: 26 })
           .trim()
           .not()
           .isEmpty(),
