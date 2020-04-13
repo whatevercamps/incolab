@@ -145,7 +145,7 @@ const Navbar = ({
           </div>
           <div className='col-4 login'>
             <span>Hello {user.name}!</span>
-            <button className='btn' onSubmit={onLogOut}>
+            <button className='btn' onClick={onLogOut}>
               Logout
             </button>
           </div>
