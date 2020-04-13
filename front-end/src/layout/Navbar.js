@@ -47,6 +47,18 @@ const Navbar = ({
     document.title = "Incolab - Proyects";
   };
 
+  const onLogOut = () => {
+    fetch("/logout")
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) {
+          setUser(null);
+        } else {
+          alert("Error");
+        }
+      });
+  };
+
   return (
     <div className='Navbar'>
       {!user ? (
@@ -124,7 +136,9 @@ const Navbar = ({
           </div>
           <div className='col-4 login'>
             <span>Hello {user.name}!</span>
-            <button className='btn'>Logout</button>
+            <button className='btn' onSubmit={onLogOut}>
+              Logout
+            </button>
           </div>
         </nav>
       )}

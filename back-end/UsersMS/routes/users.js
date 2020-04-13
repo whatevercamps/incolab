@@ -136,4 +136,10 @@ router.get(
   }
 );
 
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+  res.json({ ok: true });
+});
+
 module.exports = router;
