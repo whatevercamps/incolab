@@ -123,6 +123,8 @@ const Navbar = ({
                 type='search'
                 placeholder='Search'
                 aria-label='Search'
+                value={searchQuery}
+                onChange={(evt) => setSearchQuery(evt.target.value)}
               />
             </form>
           </div>
