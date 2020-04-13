@@ -1,7 +1,7 @@
 const http = require("http");
 var app = require("./routes");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3031;
 
 var server = http.createServer(app);
 

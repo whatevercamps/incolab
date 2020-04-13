@@ -36,13 +36,24 @@ router.get(
 );
 
 router.get(
-  "getTeam/:id",
+  "/getTeam/:id",
   passport.authenticate("jwt", {
     session: false,
   }),
   (req, res) => {
+    console.log("llego a la rutita");
     mu.connect().then((client) =>
-      client.getTeamById(client, req.params.id).then((team) => res.json(team))
+      mu
+        .getTeamById(client, req.params.id)
+        .then((team) => res.json(team))
+        .catch((err) => {
+          console.log("err", err);
+          return res.status(INTERNAL_SERVER_ERROR_CODE).json({
+            success: false,
+            msg: "Failure retrieving Team",
+            error: err,
+          });
+        })
     );
   }
 );

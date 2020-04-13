@@ -14,7 +14,9 @@ const Navbar = ({ displayLog, displayReg, displayTeam, displayHome }) => {
   useEffect(() => {
     fetch("/users/profile")
       .then((res) => res.json())
-      .then((user) => setUser(user));
+      .then((data) => {
+        if (data && data.user) setUser(data.user);
+      });
   }, []);
 
   const turnActiveTeams = () => {
@@ -111,7 +113,7 @@ const Navbar = ({ displayLog, displayReg, displayTeam, displayHome }) => {
             </a>
           </div>
           <div className='col-4 login'>
-            <p>Hello {user.name}</p>
+            <span>Hello {user.name}</span>
             <button className='btn'>Logout</button>
           </div>
         </nav>

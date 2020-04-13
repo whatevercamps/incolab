@@ -5,16 +5,16 @@ import TeamsProyects from "./TeamsProyects";
 import "../index.css";
 
 const Teams = () => {
-  const [dispTeam, setDispTeam] = useState(false);
+  const [teamId, setTeamId] = useState(null);
 
-  const displayT = () => {
-    setDispTeam(true);
+  const changeTeamId = (id) => {
+    console.log("new id", id);
+    setTeamId(id);
   };
-
   return (
     <div className='Teams'>
-      <TeamsSidebar displayDetail={displayT} />
-      {dispTeam === true && <TeamDetail />}
+      <TeamsSidebar changeTeamId={changeTeamId} />
+      {teamId && <TeamDetail teamId={teamId} />}
       <TeamsProyects />
     </div>
   );

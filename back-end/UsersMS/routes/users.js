@@ -93,12 +93,10 @@ router.post("/authenticate", inputValidator("authUser"), (req, res) => {
             const token = jwt.sign(users[0], process.env.SECRET, {
               expiresIn: expiresTime,
             });
-            res.cookie("jwt", token, { httpOnly: true, secure: false });
-            return res.status(OK_STATUS_CODE).json({
-              success: true,
-              token: token,
-              msg: `your token expires in ${expiresTime} seconds`,
-            });
+            return res
+              .status(200)
+              .cookie("jwt", token, { httpOnly: true, secure: false })
+              .redirect(200, "/");
           } else {
             return res.json({
               success: false,

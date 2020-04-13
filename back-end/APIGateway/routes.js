@@ -1,11 +1,18 @@
 const express = require("express");
+const path = require("path");
 const httpProxy = require("express-http-proxy");
 const userServiceProxy = httpProxy("http://localhost:3030/", {
   proxyReqPathResolver: (req) => {
     return `/users${req.url}`;
   },
 });
-const teamsServiceProxy = httpProxy("http://localhost:3029/");
+const teamsServiceProxy = httpProxy("http://localhost:3029/", {
+  proxyReqPathResolver: (req) => {
+    const url = `/teams${req.url}`;
+    console.log("url", url);
+    return url;
+  },
+});
 const projectsServiceProxy = httpProxy("http://localhost:3028/");
 
 const app = express();
@@ -16,7 +23,8 @@ app.post("/authenticate", userServiceProxy);
 
 app.get("/profile", userServiceProxy);
 
-app.get("/teams", teamsServiceProxy);
+app.get("/getAuthTeams", teamsServiceProxy);
+app.get("/getTeam/:id", teamsServiceProxy);
 
 app.post("/teams", teamsServiceProxy);
 
@@ -25,7 +33,10 @@ app.get("/projects", projectsServiceProxy);
 app.post("/projects", projectsServiceProxy);
 
 app.use("*", (req, res) => {
-  res.status.json({ success: false, error: "URL not found :(" });
+  console.log("req", req.url);
+  res.status(404).json({ success: false, error: "URL not found :(" });
 });
+
+app.use(express.static(path.join(__dirname, "front-end/build")));
 
 module.exports = app;

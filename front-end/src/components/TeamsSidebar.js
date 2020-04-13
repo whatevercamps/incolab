@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../index.css";
 
-const TeamsSidebar = ({ displayDetail }) => {
+const TeamsSidebar = ({ changeTeamId }) => {
   const [clickForm, setClickForm] = useState(false);
   const [teams, setTeams] = useState([]);
 
@@ -13,7 +13,7 @@ const TeamsSidebar = ({ displayDetail }) => {
   };
 
   useEffect(() => {
-    fetch("/teams/getTeams")
+    fetch("/getAuthTeams")
       .then((res) => res.json())
       .then((teams) => setTeams(teams));
   }, []);
@@ -27,7 +27,10 @@ const TeamsSidebar = ({ displayDetail }) => {
             ? "Loading teams ..."
             : teams.map((team) => (
                 <li>
-                  <button className='teamBut' onClick={displayDetail}>
+                  <button
+                    className='teamBut'
+                    onClick={() => changeTeamId(team._id)}
+                  >
                     {team.name}
                   </button>
                 </li>

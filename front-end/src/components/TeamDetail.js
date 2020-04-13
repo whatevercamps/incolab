@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import "../index.css";
 
-const TeamDetail = () => {
+const TeamDetail = ({ teamId }) => {
   const [team, setTeam] = useState();
 
-  useEffect((id) => {
-    fetch("/teams/getTeam/" + id)
-      .then((res) => res.json())
-      .then((team) => setTeam(team));
+  useEffect(() => {
+    console.log(teamId);
+    if (teamId)
+      fetch("/getTeam/" + teamId)
+        .then((res) => res.json())
+        .then((team) => setTeam(team));
   }, []);
-  return (
+  return team ? (
     <div className='TeamDetail'>
       <h1>{team.name}</h1>
       <h3>{team.description}</h3>
@@ -60,13 +63,17 @@ const TeamDetail = () => {
       <br></br>
       <hr></hr>
       <h4>Tags</h4>
-      <span>{team.tags[0]}</span>
-      <span>Node JS</span>
-      <span>Javascript</span>
-      <span>Innovation</span>
-      <span>Covid-19</span>
+      {team.tags &&
+        team.tags.length &&
+        team.tags.map((tag) => <span>{tag}</span>)}
     </div>
+  ) : (
+    <p>loading team</p>
   );
+};
+
+TeamDetail.prototypes = {
+  teamId: PropTypes.string.isRequired,
 };
 
 export default TeamDetail;

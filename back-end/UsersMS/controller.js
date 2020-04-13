@@ -4,7 +4,7 @@ const express = require("express");
 var bodyParser = require("body-parser");
 var morgan = require("morgan");
 const passport = require("passport");
-
+const cookieParser = require("cookie-parser");
 /* ----------------- */
 /*  APP CONFIG       */
 /* ----------------- */
@@ -14,7 +14,7 @@ const usersRouter = require("./routes/users");
 const passportMiddleware = require("./utils/passport");
 
 app.use(express.json());
-
+app.use(cookieParser());
 app.set("superSecret", process.env.SECRET || "youreismysecretbaby");
 
 app.use(
