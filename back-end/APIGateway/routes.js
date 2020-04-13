@@ -36,6 +36,7 @@ app.get("/logout", userServiceProxy);
 
 app.get("/getAuthTeams", teamsServiceProxy);
 app.get("/getTeam/:id", teamsServiceProxy);
+
 app.post("/createTeam", teamsServiceProxy);
 
 app.get("/projects", projectsServiceProxy);
@@ -45,7 +46,7 @@ app.get("/getProjectsTeam", teamProjectsServiceProxy);
 app.post("/createProjectTeam", teamProjectsServiceProxy);
 
 app.use("*", (req, res) => {
-  console.log("req", req.url);
+  console.log("req", req);
   res.status(404).json({ success: false, error: "URL not found :(" });
 });
 
