@@ -45,4 +45,6 @@ The npm run build, generates a folder called build in the front-end which repres
 
 # Overview 🌄
 
+![Incolab Overview](https://i.imgur.com/VelpwkA.png)
+
 Made by [Juan Felipe Torres](https://github.com/jftorresp) and [David Bautista](https://github.com/whatevercamps), licenced under MIT 👌
