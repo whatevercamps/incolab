@@ -4,7 +4,7 @@ import TeamDetail from "./TeamDetail";
 import TeamsProyects from "./TeamsProyects";
 import "../index.css";
 
-const Teams = () => {
+const Teams = ({ userId }) => {
   const [teamId, setTeamId] = useState(null);
 
   const changeTeamId = (id) => {
@@ -15,7 +15,7 @@ const Teams = () => {
     <div className='Teams'>
       <TeamsSidebar changeTeamId={changeTeamId} />
       {teamId && <TeamDetail teamId={teamId} />}
-      <TeamsProyects />
+      <TeamsProyects teamId={teamId} userId={userId} />
     </div>
   );
 };

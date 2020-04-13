@@ -16,7 +16,7 @@ const BAD_REQUEST_CODE = 400;
 const router = express.Router();
 
 router.get(
-  "/",
+  "/getProjectsTeam",
   passport.authenticate("jwt", {
     session: false,
   }),
@@ -60,7 +60,7 @@ router.get(
 );
 
 router.post(
-  "/",
+  "/createProjectTeam",
   passport.authenticate("jwt", {
     session: false,
   }),

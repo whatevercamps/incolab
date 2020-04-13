@@ -23,18 +23,20 @@ const TeamsSidebar = ({ changeTeamId }) => {
       <div className='teamsList'>
         <h3>My Teams</h3>
         <ul>
-          {teams.length == 0
-            ? "Loading teams ..."
-            : teams.map((team) => (
-                <li>
-                  <button
-                    className='teamBut'
-                    onClick={() => changeTeamId(team._id)}
-                  >
-                    {team.name}
-                  </button>
-                </li>
-              ))}
+          {teams.length === 0 ? (
+            <p>Loading teams ...</p>
+          ) : (
+            teams.map((team, i) => (
+              <li key={"teams" + i}>
+                <button
+                  className='teamBut'
+                  onClick={() => changeTeamId(team._id)}
+                >
+                  {team.name}
+                </button>
+              </li>
+            ))
+          )}
         </ul>
         <div className='createButton'>
           <button className='btn' onClick={displayCreateForm}>
@@ -42,9 +44,9 @@ const TeamsSidebar = ({ changeTeamId }) => {
           </button>
         </div>
         {clickForm === true && (
-          <form action='/teams/createTeam' method='post' className='createForm'>
+          <form action='/createTeam' method='post' className='createForm'>
             <div className='form-group'>
-              <label htmlFor='exampleInputName'>Name</label>
+              <label>Name</label>
               <input
                 type='text'
                 className='form-control'
@@ -53,7 +55,7 @@ const TeamsSidebar = ({ changeTeamId }) => {
               />
             </div>
             <div className='form-group'>
-              <label htmlFor='exampleInputPassword1'>Description</label>
+              <label>Description</label>
               <textarea
                 type='text'
                 className='form-control'
@@ -62,7 +64,7 @@ const TeamsSidebar = ({ changeTeamId }) => {
               />
             </div>
             <div className='form-group'>
-              <label htmlFor='exampleInputTags'>Tags</label>
+              <label>Tags</label>
               <input
                 type='text'
                 className='form-control'

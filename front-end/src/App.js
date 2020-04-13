@@ -7,6 +7,8 @@ import Home from "./components/Home";
 import "./index.css";
 
 function App() {
+  const [userId, setUserId] = useState(null);
+
   const [clickHome, setClickHome] = useState(true);
   const [clickLog, setClickLog] = useState(false);
   const [clickReg, setClickReg] = useState(false);
@@ -39,6 +41,10 @@ function App() {
     setClickReg(false);
   };
 
+  const getUserId = (id) => {
+    setUserId(id);
+  };
+
   return (
     <div>
       <Navbar
@@ -46,11 +52,12 @@ function App() {
         displayLog={displayLogin}
         displayReg={displayRegister}
         displayTeam={displayTeams}
+        getUserId={getUserId}
       />
       {clickHome === true && <Home />}
       {clickLog === true && <Login />}
       {clickReg === true && <Register />}
-      {clickTeam === true && <Teams />}
+      {clickTeam === true && <Teams userId={userId} />}
     </div>
   );
 }

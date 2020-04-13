@@ -161,7 +161,6 @@ p {
 
 .Login .container {
   margin-top: 20px;
-  width: 50%;
 }
 
 .Login .loginForm {
@@ -214,6 +213,10 @@ p {
   background-color: transparent;
   color: #ffffff;
   border: none;
+}
+
+.TeamsSidebar .teamsList p {
+  color: #ffffff;
 }
 
 .TeamsSidebar .teamsList .teamBut:hover {
@@ -420,6 +423,30 @@ h4 {
   padding: 5px 0px 5px 0px;
 }
 
+.TeamsProyects .createForm {
+  background-color: #cccccc;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.TeamsProyects .createForm label {
+  font-family: "Sen", sans-serif;
+}
+
+.TeamsProyects .createForm input {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+.TeamsProyects .createForm textarea {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+.TeamsProyects .createForm .but {
+  text-align: center;
+}
+
 .Home .r {
   background-color: firebrick;
 }
@@ -433,4 +460,37 @@ h4 {
 
 .Home .row {
   margin-top: 7rem;
+}
+
+.Home .featured-login .featured {
+  background-color: #797a8b;
+}
+
+.Home .related-choice .related,
+.editorChoice {
+  background-color: #797a8b;
+}
+
+.Home .row {
+  margin-top: 25px;
+}
+
+.Home h1,
+h2 {
+  font-family: "Sen", sans-serif;
+}
+
+.Home h1 {
+  text-align: center;
+  font-weight: bold;
+  color: #6d93ca;
+}
+
+.Home .text {
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+}
+
+.Home .title {
+  color: #ffffff;
 }

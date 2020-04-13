@@ -8,7 +8,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "./Incolab-logo.png";
 
-const Navbar = ({ displayLog, displayReg, displayTeam, displayHome }) => {
+const Navbar = ({
+  displayLog,
+  displayReg,
+  displayTeam,
+  displayHome,
+  getUserId,
+}) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -16,6 +22,7 @@ const Navbar = ({ displayLog, displayReg, displayTeam, displayHome }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data && data.user) setUser(data.user);
+        getUserId(data.user._id);
       });
   }, []);
 
