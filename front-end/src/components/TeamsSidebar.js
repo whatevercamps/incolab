@@ -41,7 +41,7 @@ const TeamsSidebar = ({ changeTeamId }) => {
         console.error("Error:", error);
       });
   };
-
+  //laupardo: si la persona no tiene teams podrían poner una animación de spinner o de loading mientras se hace el fecth y cuando llegue el fecth, dejarle saber al usuario que no tiene teams todavía.  
   return (
     <div className='TeamsSidebar'>
       <div className='teamsList'>
