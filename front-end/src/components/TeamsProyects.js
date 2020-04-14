@@ -19,7 +19,7 @@ const TeamsProyects = ({ teamId, userId }) => {
       setClickForm(false);
     }
   };
-
+// laupardo: si el usuario no tiene proyectos para ese team podrían dejarselo saber con un mensaje o alerta o algoa así. 
   return (
     <div className='TeamsProyects'>
       <h1>My Proyects</h1>
