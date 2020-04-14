@@ -1,6 +1,8 @@
 import React from "react";
 import "../index.css";
 
+/*Mariana Rodriguez: When there's an error while registering, the user receives a JSON from the API. This error should be caught
+by the  view and shown in an alert. */
 const Register = () => (
   <div className='Register'>
     <div className='container'>
