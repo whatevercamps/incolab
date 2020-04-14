@@ -9,7 +9,8 @@ const Home = (props) => {
   const [featuredProjects, setFeaturedProjects] = useState([]);
   const [relatedProjects, setRelatedProjects] = useState([]);
   const [editorChoiceProjects, setEditorChoiceProjects] = useState([]);
-
+  //laupardo: Podrían crear proyectos en la base de datos para mostrar. Adicionalmente sería bueno crear algún tipo de división entre los related projects y el editor's choice. 
+  // ya sea separando con columnas o una línea vertical blanca. 
   return (
     <div className='Home container'>
       <div className='row'>
