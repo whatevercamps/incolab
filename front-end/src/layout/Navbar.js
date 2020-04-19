@@ -71,7 +71,7 @@ const Navbar = ({
       {!user ? (
         <nav className='navbar'>
           <div className='col-1 logo'>
-            <a href='#'>
+            <a onClick={displayHome} className='logoBut'>
               <img src={logo} alt='navbar logo'></img>
             </a>
           </div>
