@@ -37,7 +37,7 @@
 
 .Navbar .logo {
   padding-left: 0px;
-  padding-right: 0px;
+  padding-right: 8px;
 }
 
 .Navbar .search input {
@@ -84,6 +84,40 @@
 .Navbar .navbarBut:hover {
   background-color: transparent;
   border: none;
+}
+
+/* Banner Styles */
+
+.Banner {
+  background-image: url("/innovation-team.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 85vh;
+}
+
+.Banner .row {
+  vertical-align: middle;
+  align-content: center;
+  justify-content: center;
+  height: 94%;
+  z-index: 2;
+}
+
+.Banner .login {
+  vertical-align: middle;
+  padding: 30px;
+}
+
+.Banner .title {
+  vertical-align: middle;
+  padding: 30px;
+}
+
+.Banner h1 {
+  font-family: "Sen", sans-serif;
+  padding-top: 100px;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 /* Register Styles */
@@ -467,6 +501,10 @@ h4 {
   text-align: center;
 }
 
+.Home {
+  margin-bottom: 20px;
+}
+
 .Home .r {
   background-color: firebrick;
 }
@@ -484,11 +522,15 @@ h4 {
 
 .Home .featured-login .featured {
   background-color: #797a8b;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 .Home .related-choice .related,
 .editorChoice {
   background-color: #797a8b;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 .Home .row {
@@ -517,4 +559,39 @@ h2 {
 
 .ProjectCard .card {
   margin-top: 2rem;
+}
+
+/* Footer Styles */
+
+.Footer {
+  background-color: #232426;
+  margin-bottom: -10px;
+}
+
+.Footer h1 {
+  color: #ffffff;
+}
+
+.Footer img {
+  padding: 20px;
+  width: 30%;
+  vertical-align: middle;
+}
+
+.Footer i,
+h3 {
+  color: #ffffff;
+}
+
+.Footer i {
+  font-size: 18px;
+}
+
+.Footer .follow {
+  padding: 20px;
+}
+
+.Footer span {
+  padding-left: 5px;
+  padding-right: 5px;
 }

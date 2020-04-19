@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
   faUsers,
-  faProjectDiagram,
+  faBriefcase,
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "./Incolab-logo.png";
 
@@ -71,7 +71,9 @@ const Navbar = ({
       {!user ? (
         <nav className='navbar'>
           <div className='col-1 logo'>
-            <img src={logo} alt='navbar logo'></img>
+            <a href='#'>
+              <img src={logo} alt='navbar logo'></img>
+            </a>
           </div>
           <div className='col-3 search' onSubmit={handleSearch}>
             <form className='form-inline my-2 my-lg-0'>
@@ -98,7 +100,7 @@ const Navbar = ({
             </button>
             <button className='navbarBut'>
               <i id='proyects' onClick={turnActiveProyects}>
-                <FontAwesomeIcon icon={faProjectDiagram}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faBriefcase}></FontAwesomeIcon>
               </i>
             </button>
           </div>
@@ -141,7 +143,7 @@ const Navbar = ({
             </button>
             <button className='navbarBut'>
               <i id='proyects' onClick={turnActiveProyects}>
-                <FontAwesomeIcon icon={faProjectDiagram}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faBriefcase}></FontAwesomeIcon>
               </i>
             </button>
           </div>
