@@ -125,7 +125,8 @@
 }
 
 /* Register Styles */
-
+/* Mariana Rodriguez: Since Register and Login clases share a lot of style definitions, they could be added at the same time. */
+.Login .loginForm,
 .Register .registerForm {
   background-color: #cccccc;
 }
@@ -219,6 +220,7 @@ p {
 
 .Login .container {
   margin-top: 20px;
+  width: 50%; /*Mariana Rodriguez: this container should have the same width as the register one.  */
 }
 
 .Login .loginForm {
@@ -535,6 +537,10 @@ h4 {
   background-color: #797a8b;
   border-radius: 20px;
   padding: 10px;
+}
+/* Mariana Rodriguez: add margin to the this element in order for it not to be stuck to the end of the view */
+.related-choice {
+  margin-bottom: 30px;
 }
 
 .Home .row {
