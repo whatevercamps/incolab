@@ -65,7 +65,8 @@ const Navbar = ({
     displaySearch(search);
     evt.preventDefault();
   };
-
+  // laurpardo: Para alguien que está apenas conociendo la app puede no ser tan obvio el significado de los íconos, podrían agregar el nombre o descripción cuando cuno hace hover sobre los íconos. 
+  // o agregarlo al lado del ícono. 
   return (
     <div className='Navbar'>
       {!user ? (
