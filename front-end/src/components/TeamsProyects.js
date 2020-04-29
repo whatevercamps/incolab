@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import "../index.css";
 
+/* This view shouldn't be accesible when the user's not logged in. Or at least when trying to interact with it a message should be 
+displayed explaining that they need to sign in to access this functionalities and an option to redirect to Sign up / Login view*/
 const TeamsProyects = ({ teamId, userId }) => {
-  // const [projects, setProjects] = useState(null);
   const [clickForm, setClickForm] = useState(false);
-
-  // useEffect(() => {
-  //   if (teamId && userId)
-  //     fetch("/getProjectsTeams")
-  //       .then((res) => res.json())
-  //       .then((data) => (data.team._id = teamId))
-  //       .then((projects) => setProjects(projects));
-  // }, []);
-
+  
   const displayCreateForm = () => {
     setClickForm(true);
     if (clickForm === true) {
@@ -22,11 +15,11 @@ const TeamsProyects = ({ teamId, userId }) => {
 
   return (
     <div className='TeamsProyects'>
-      <h1>My Proyects</h1>
+      <h1>My Projects</h1>
       <p>Here's a list of all your current proyects in this team</p>
       <div className='createButton'>
         <button className='btn' onClick={displayCreateForm}>
-          Create a new Proyect
+          Create a new Project
         </button>
       </div>
       {clickForm === true && (
